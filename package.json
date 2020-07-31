@@ -1,0 +1,33 @@
+{
+  "name": "cloudwatch-alarm-to-microsoft-teams",
+  "version": "1.0.0",
+  "description": "Send CloudWatch alarms to a Microsoft Teams channel.",
+  "main": "handler.js",
+  "scripts": {
+    "test": "./node_modules/.bin/eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/widdix/cloudwatch-alarm-to-microsoft-teams.git"
+  },
+  "keywords": [
+    "aws",
+    "cloudwatch",
+    "microsoft",
+    "teams"
+  ],
+  "author": "Andreas Wittig <andreas@widdix.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/widdix/cloudwatch-alarm-to-microsoft-teams/issues"
+  },
+  "homepage": "https://github.com/widdix/cloudwatch-alarm-to-microsoft-teams#readme",
+  "devDependencies": {
+    "eslint": "7.5.0",
+    "eslint-config-google": "0.14.0"
+  },
+  "dependencies": {
+    "axios": "0.19.2",
+    "axios-retry": "3.1.8"
+  }
+}
