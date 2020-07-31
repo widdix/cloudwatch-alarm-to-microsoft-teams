@@ -9,7 +9,7 @@ Parameters:
 Resources:
   Topic:
     Type: 'AWS::SNS::Topic'
-  LambdaFunction:
+  ForwardAlarmFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: 'handler.processEvent'
@@ -20,24 +20,26 @@ Resources:
         Variables:
           WEBHOOK_URL: !Ref WebhookURL
       Events:
-        SNS:
-          Type: SNS
+        EventRule:
+          Type: EventBridgeRule
           Properties:
-            Topic: !Ref Topic
-  ErrorsTooHighAlarm:
-    Type: 'AWS::CloudWatch::Alarm'
+            Pattern:
+              source:
+              - 'aws.cloudwatch'
+              'detail-type':
+              - 'CloudWatch Alarm State Change'
+              detail:
+                state:
+                  value:
+                  - ALARM
+      Policies:
+      - !Ref ForwardAlarmPolicy
+  ForwardAlarmPolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
     Properties:
-      AlarmDescription: 'Invocations failed due to errors in the function'
-      Namespace: 'AWS/Lambda'
-      MetricName: Errors
-      Dimensions:
-      - Name: FunctionName
-        Value: !Ref LambdaFunction
-      Statistic: Sum
-      Period: 60
-      EvaluationPeriods: 1
-      ComparisonOperator: GreaterThanThreshold
-      Threshold: 0
-      TreatMissingData: notBreaching
-      AlarmActions:
-      - !Ref Topic
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: 'cloudwatch:describeAlarms'
+          Resource: '*'
