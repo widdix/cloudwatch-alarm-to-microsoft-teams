@@ -7,8 +7,6 @@ Parameters:
     Description: 'Slack incoming webhook URL'
     Type: String
 Resources:
-  Topic:
-    Type: 'AWS::SNS::Topic'
   ForwardAlarmFunction:
     Type: 'AWS::Serverless::Function'
     Properties:

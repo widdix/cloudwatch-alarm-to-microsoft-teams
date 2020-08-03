@@ -1,8 +1,14 @@
 # Send CloudWatch alarms to a Microsoft Teams channel
 
+This is an example of how to send CloudWatch alarms to a Microsoft Teams channel. Check out the blog post on marbot.io to learn more.
+
+> One thing before we go any further. You should check out our chatbot [marbot for Microsoft Teams](https://marbot.io) as a more advanced solution to monitor your AWS account. You will love the following features: deduplication of alarms, quick links pointing to the right places on the AWS Management Console, escalation with direct messages, and many more.
+
 ## Configure Microsoft Teams
 
-1. 
+1. Open the channel in Microsoft Teams that you want to send CloudWatch alarms to.
+1. Create a new connector of type `Incoming Webhook` for the channel.
+1. Copy the webhook URL.
 
 ## Deploy to AWS
 
