@@ -1,10 +1,10 @@
 ---
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
-Description: 'CloudWatch Alarm to Slack'
+Description: 'CloudWatch Alarm to Teams'
 Parameters:
   WebhookURL:
-    Description: 'Slack incoming webhook URL'
+    Description: 'Teams incoming webhook URL'
     Type: String
 Resources:
   ForwardAlarmFunction:
